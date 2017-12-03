@@ -1,0 +1,75 @@
+ html{
+    background: black;
+    color: white;
+  }
+
+ #player1,#player2 {
+  width: 60px;
+  height: 67px;
+  position: relative;
+  float:left;
+  }
+
+  .player1_up{
+  background:  url('../images/blue.png') no-repeat 0 0%;
+  }
+
+  .player2_up {
+  background:  url('../images/blue.png') no-repeat 0 0%;
+  }
+
+
+  .animation_down
+  {
+  animation: try 1s steps(4) infinite ;
+  animation-fill-mode: forwards;  
+  }
+  
+  @keyframes try
+  {
+  0%{background-position: 0px 0px;}
+  99%{background-position: -237px 0px;}
+  100%{}
+  }
+
+  .clear{
+  	clear:both;
+  }
+
+  #gameboard {
+   height:560px;
+   width:800px;
+   background-image: url('../images/board.jpg');
+   border: 1px solid white;
+   }
+
+.corner
+{
+  float:left;
+  height:120px;
+  width:120px;
+  
+}
+.horizontal
+{
+  float:left;
+  height:120px;
+  width:80px;
+  
+}
+.vertical
+{
+  float:left;
+  height:80px;
+  width:120px;
+  
+}
+
+.middle
+{
+  float:left;
+  height:80px;
+  width:560px;
+  
+}
+
