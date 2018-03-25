@@ -1,34 +1,184 @@
  html{
-    background: black;
+    background: #131212;
     color: white;
   }
+  .chat {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.chat .user-photo img{
+    width: 100%;
+}
+
+.friend .chat-message {
+    color: black;
+    width: auto;
+    max-width: 70%;
+    background: rgb(229, 229, 234);
+    border-radius: 20px 20px 20px 0;
+}
+
+.chat .chat-message {
+    padding: 2px;
+    margin: 5px 10px 0;
+    /*border-radius: 10px;*/
+    font-size: 14px;
+}
+
+.self .chat-message {
+    color: white;
+    max-width: 80%;
+    width: auto;
+    margin: 5px 0 5px auto;
+    /*background: rgba(255, 153, 0, .7);*/
+    border-radius: 20px 20px 0px 20px;
+    background: rgb(64, 172, 246);
+    overflow-wrap: break-word;
+
+    /*order: -1;*/
+}
+
+.right {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.headerBar{
+  /*  border: 10px solid black; */
+    font-family: verdana;
+    font-size: 20px;
+    color: white;
+    padding: 25px;
+    width: 178px;
+    height: 10px;
+    min-width: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin: 20px auto 0px auto;
+    background-color: #191919;
+    border-radius: 10px 10px 0px 0px;
+}
+.headerBar .title {
+    margin: auto 20px;
+    justify-content: center; 
+    display: flex; 
+    align-items: center;
+}
+.chat-form textarea:focus {
+    background: #fff;
+}
+
+.chat-form textarea {
+   
+    background: #fbfbfb;
+    width: 163px;
+    height: 65px;
+    border-radius: 3px;
+    resize: none;
+    /*padding: 10px;*/
+    font-size: 15px;
+    color: #000;
+}
+
+.chat-form {
+    display: flex;
+    width: 65;
+    align-items: flex-start;
+    overflow: auto;
+}
+
+#inputDiv {
+    width: 75%;
+    margin-right: 15px;
+}
+
+.chatbox {
+    margin-top: -20%; 
+        width: 175px;
+    height: 341px;
+    background: white;
+    padding: 25px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin: 20px auto 0px auto;
+    border-radius: 0px 0px 10px 10px;
+    background: black;
+}
+
+.chatlogs {
+
+    padding: 10px;
+    width: 100%;
+    height: 272px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /*background:rgba(200, 200, 200, .1);*/
+}
+
+.chatlogs::-webkit-scrollbar{
+    width: 10px;
+}
+
+.chatlogs::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .1);
+}
+
 
  #player1,#player2 {
   width: 60px;
-  height: 67px;
+  height: 60px;
   position: relative;
   float:left;
   }
 
   .player1_up{
-  background:  url('../images/blue.png') no-repeat 0 0%;
+  background:  url('../images/redup.png') no-repeat 0 0%;
   }
 
   .player2_up {
-  background:  url('../images/blue.png') no-repeat 0 0%;
+  background:  url('../images/greenup.png') no-repeat 0 0%;
+  }
+
+  .player1_right{
+  background:  url('../images/redright.png') no-repeat 0 0%;
+  }
+
+  .player2_right {
+  background:  url('../images/greenright.png') no-repeat 0 0%;
+  }
+
+  .player1_down{
+  background:  url('../images/reddown.png') no-repeat 0 0%;
+  }
+
+  .player2_down {
+  background:  url('../images/greendown.png') no-repeat 0 0%;
+  }
+
+  .player1_left{
+  background:  url('../images/redleft.png') no-repeat 0 0%;
+  }
+
+  .player2_left{
+  background:  url('../images/greenleft.png') no-repeat 0 0%;
   }
 
 
-  .animation_down
+  .animation
   {
-  animation: try 1s steps(4) infinite ;
+  animation: try 1s steps(3) infinite ;
   animation-fill-mode: forwards;  
   }
   
   @keyframes try
   {
   0%{background-position: 0px 0px;}
-  99%{background-position: -237px 0px;}
+  99%{background-position: -180px 0px;}
   100%{}
   }
 
@@ -41,6 +191,11 @@
    width:800px;
    background-image: url('../images/board.jpg');
    border: 1px solid white;
+   position: relative;
+   float: left;
+   margin-left: 15px;
+   margin-top: 10px;
+
    }
 
 .corner
@@ -73,3 +228,113 @@
   
 }
 
+#dialogdiv
+  {
+      display: none;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      width: 300px;
+      padding: 6px 8px 8px;
+      box-sizing: border-box;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      color: white;
+      font-weight: bold;
+      background-color: #191919;
+      font-family: verdana;
+  }
+  #dialogdiv button {
+      background-color: #ccc;
+      display: inline-block;
+      border-radius: 3px;
+      border: 1px solid #aaa;
+      padding: 2px;
+      text-align: center;
+      width: 80px;
+      cursor: pointer;
+  }
+  #dialogdiv button:hover
+  {
+      background-color: #ddd;
+  }
+  #confirmBox .message
+  {
+      text-align: left;
+      margin-bottom: 8px;
+  }
+
+#playerboard {height: 560px;font-family: verdana;margin-left: 20px;float: left;margin-top: 10px;width: 230px;border: 1px solid #191919;background-color: #191919;text-align: center;}
+
+#balance,#balance2 {width:230px;height:30px;overflow:hidden;}
+
+#networth, #networth2 {width:230px;height:30px;overflow:hidden;}
+#properties, #properties2 {width:230px;height:30px;overflow:hidden;}
+#message, #message2,#commentary,#commentary2 {width:230px;height:45px;overflow:hidden;}
+
+#commentary2{
+  height:60px;
+}
+
+#networth2,#properties2,#message2,#balance2,#commentary2 {
+    background-color: black;
+    
+}
+
+
+.box
+{
+  border: 1px solid white;
+  width: 49%;
+  float: left;
+  text-align: center;
+}
+
+#showPropertiesDialog
+{
+  display: none;
+  border: 1px solid white;
+  /*margin-right:185px;*/
+  padding:0;overflow:hidden;resize:none;margin-top: 10px;
+  width: 230px;
+  height: 325px;
+  clear: both;
+  background-color: black;
+  position: relative;
+  top: -255px;
+
+}
+
+#properties2 {
+  text-decoration: underline;
+  cursor: pointer;
+
+}
+
+#dice {
+      font-size: 134px;
+    /* height: 80px; */
+    float: right;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    left: 10px;
+    top: -58px;
+}
+#dice:hover {
+  cursor: pointer;
+}
+
+@font-face {
+    font-family: Game of Thrones;
+    src: url('Game of Thrones.ttf');
+}
+
+#game
+{
+  height: 800px;
+}
+
+div#dragon {
+    background: black;
+}
