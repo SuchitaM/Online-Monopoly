@@ -42,30 +42,26 @@ function animateMovement(playerId,from,to,diceNumber,dbResponse,requestAction,bu
     }
     flyInFirstDirection(pixels,fromDirection,elem,toDirection,playerId,from,to,dbResponse,requestAction,buildAction,remainingPixels);
   }
-
-  
-  
-  
 }
 
-function getDirection(pos){
-
-  if(pos>=1 && pos<6 )
-  {
-    return "up";
-  }
-  else if(pos>=6 && pos<14 )
-  {
-    return "left";
-  }
-  else if(pos>=14 && pos<19 )
-  {
-    return "down";
-  }
-  else
-  {
-    return "right";
-  }
+function getDirection(pos)
+{
+    if(pos>=1 && pos<6)
+        {
+            return "up";
+        }
+    else if(pos>=6 && pos<14)
+        {
+            return "left";
+        }
+    else if(pos>=14 && pos<19)
+        {
+            return "down";
+        }
+    else
+        {
+            return "right";
+        }   
 }
 
 function dracarys(pixels,direction,elem,toDirection,playerId,from,to,dbResponse,requestAction, buildAction){
