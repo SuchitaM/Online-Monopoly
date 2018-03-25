@@ -1,6 +1,17 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<link rel="icon" type="image/png" sizes="96x96" href="images/monopoly-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/monopoly-32x32.png">
+<!-- chart -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- chart -->
+<!-- map -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>    
+<script type="text/javascript"
+  src="http://maps.googleapis.com/maps/api/js?key= AIzaSyDr5DhlFDN54D5E-GrnIZ46UrURPKWNHYo&sensor=true">
+</script>
+<!-- map -->
 <script src="NodeJs\node_modules\socket.io-client\dist\socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="js/game.js"></script>
@@ -23,13 +34,21 @@
 		<div class="middle"></div>
 		<div class="vertical" id="15"></div>
 		<div class="vertical" id="4"></div>
-		<div class="middle"></div>
+		<div class="middle">
+			<div id="dialogdiv">
+				<div id="dialogmessage"></div>
+				<button id="confirmtrue">Yes</button>
+				<button id="confirmfalse">No</button>
+			</div>
+		</div>
 		<div class="vertical" id="16"></div>
 		<div class="vertical" id="3"></div>
 		<div class="middle"></div>
 		<div class="vertical" id="17"></div>
 		<div class="vertical" id="2"></div>
-		<div class="middle"></div>
+		<div class="middle">
+		<div id="dice" ng-click="rollDice()" ng-disabled=disableButton style="cursor:pointer;" title="Roll Your Dice"></div>
+		</div>
 		<div class="vertical" id="18"></div>
 		<div class="corner" id="1">
 			<div id="player1" class="player1_up"></div>
@@ -45,12 +64,90 @@
 		<div class="corner" id="19"></div>
 		<div class="clear"></div>
 	</div>
-		<div id="balance">{{balance}}</div>
-		<div id="networth">{{networth}}</div>
-		<div id="message">{{message}}</div>
-		
-		<input type="button" value="roll" ng-click="rollDice()" ng-disabled=disableButton style="cursor:pointer;" title="remove quantity">
+
+	<div id="playerboard">
+		<div>
+			
+			<div id="playerId"></div>
+			<div id="dragon">
+			<img id="dragonImage" src = "images/dragon1.png" width ="57" height = "60"></div>
+		</div>
+		<div>
+			<div id="balance">BALANCE</div>
+			<div id="balance2">{{balance}}</div>
+		</div>
+		<div>
+			<div id="networth">NET WORTH</div>
+			<div id="networth2">{{networth}}</div>
+		</div>
+		<div>
+			<div id="properties">PROPERTIES</div>
+			<div id="properties2" ng-click="showProperties()">{{properties}}</div>
+		</div>
+		<div>
+			<div id="message">MESSAGE</div>
+			<div id="message2">{{message}}</div>
+		</div>
+		<div>
+			<div id="commentary">COMMENTARY</div>
+			<div id="commentary2">{{commentary}}</div>
+		</div>
+		<div>
+            <input type ="text" value ="0" id = "textbox"/>
+        </div>
+		<div id="showPropertiesDialog">You don't own any properties.
+		</div>
+		</div>
+		<div>
+		  <section>
+	      <div class="headerBar">
+	           <p class="title">CHATROOM</p>
+	      </div>
+	      <div class="chatbox">    
+            <div class="chatlogs" id ="chatlogs">
+              <div class="chat"></div>
+              <div class="chatright"></div>
+            </div>    
+
+            <div class="chat-form">
+                <div id="inputDiv">
+                    <textarea class="input" placeholder="Type a message"></textarea>
+                </div>
+            </div>
+	      </div>
+    </section>
+	</div>		
+	</div>
 </div>
+<!-- chart 
+<div id="piechart">hello</div> -->
+<table class="columns">
+	<tr>
+	  <td><div id="piechart1" style="width:350px; height:350px;border: 1px solid #ccc"></div></td>
+	  <td><div id="piechart2" style="width:350px; height:350px;border: 1px solid #ccc"></div></td>
+	  <td><div id="barchart" style="width:350px; height:350px;border: 1px solid #ccc"></div></td>
+	</tr>
+	<tr>
+		<td colspan="3"><div id="map" style="width:1050px;height:500px;border:1px solid white;"></div></td>
+	</tr>
+</table>
+<!-- chart -->
+<script type="text/javascript">
+    var ButtonClicked = false;
+    $("textarea").keypress(function(event) {
+    // If the enter key is pressed
+      if(event.which === 13) {
+        // Ignore the default function of the enter key(Dont go to a new line)
+        event.preventDefault();
+        ButtonClicked = false;
+        // Call the method for sending a message, pass in the text from the user
+      //  appendChat(this.value);
+        send(this.value);
+        // Clear the text area
+        this.value = "";
+      }
+     });
+</script>
 
 
 </body>
